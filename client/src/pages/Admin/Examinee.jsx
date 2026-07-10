@@ -93,6 +93,8 @@ const Examinee = () => {
     <>
      <div className='container-fluid p-0'>
        {editFormVisible && (
+        <div className='row'>
+        <div className='col-sm-12'>
        <div className="card" style={{ border: "1px solid #6f42c1", width: "100%" }}>
           <div className="card-body">
             <h3 className="fw-bold" style={{ color: "#6f42c1" }}>Edit Examinee</h3>
@@ -124,9 +126,13 @@ const Examinee = () => {
             </form>
           </div>
         </div>
+        </div>
+        </div>
       )}
 
-      <div className="card mx-auto mt-2" style={{ border: "1px solid #6f42c1", width: "100%" }}>
+      <div className='row'>
+        <div className='col-sm-12'>
+          <div className="card mx-auto mt-2" style={{ border: "1px solid #6f42c1", width: "100%" }}>
         <div className="card-body">
           <div className="row mb-3">
             <div className="col-sm-6">
@@ -184,6 +190,8 @@ const Examinee = () => {
               </table>
             </div>
           </div>
+        </div>
+      </div>
         </div>
       </div>
      </div>

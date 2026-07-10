@@ -187,7 +187,7 @@ const Login = () => {
             <br />
 
             <label htmlFor="email" style={styles.label}>
-              Email
+             <i class="fa-solid fa-envelope"></i> Email Address
             </label>
             <input
               type="email"
@@ -200,19 +200,19 @@ const Login = () => {
             />
 
             <label htmlFor="password" style={styles.label}>
-              Password
+             <i class="fa-solid fa-lock"></i> Password
             </label>
             <input
               type="password"
               name="password"
-              placeholder="••••••"
+              placeholder="••••"
               required
               onChange={handleChange}
               value={data.password}
               style={styles.input}
             />
 
-            <button type="submit" style={styles.submitBtn}>
+            <button type="submit" style={styles.submitBtn}><i class="fa-solid fa-arrow-right-to-bracket"></i>
               Login
             </button>
 

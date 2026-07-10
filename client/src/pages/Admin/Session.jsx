@@ -160,7 +160,7 @@ const Session = () => {
               }}
             >
 
-              <div className="card-body">
+              <div className="card-body ">
                 <div className="container p-0">
                   <h3 className="fw-bold" style={{ color: "#6f42c1" }}>Session List</h3>
                   <table className="table table-bordered text-center">

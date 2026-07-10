@@ -110,7 +110,7 @@ const AdminLogin = () => {
         },
         subheading: {
             color: '#d4a3ffff',
-            fontSize: '37px',
+            fontSize: '32px',
             marginBottom: '1px',
             
         },
@@ -184,7 +184,7 @@ const AdminLogin = () => {
                 <div style={styles.leftPanel}>
                     <div style={{ ...styles.abstractCircles, ...styles.bigCircle }} />
                     <div style={{ ...styles.abstractCircles, ...styles.smallCircle }} />
-                    <div style={styles.subheading}>Welcome Back Admin!!</div>
+                    <div className='fw-bold' style={styles.subheading}><i class="fa-solid fa-user-tie"></i>Welcome Back Admin!!</div>
                     <div style={styles.welcomeText}>Your command center awaits.</div>
                     <div style={styles.subText}>Manage users, monitor exams, and track performance — all in one place.
 
@@ -199,7 +199,7 @@ const AdminLogin = () => {
                             <div className='border-b-2' style={styles.heading}>Admin Login</div>
                         </div>
                 <br />
-                        <label htmlFor="email" style={styles.label}>Email</label>
+                        <label htmlFor="email" style={styles.label}><i class="fa-solid fa-envelope"></i>Email Address</label>
                         <input
                             type="email"
                             name="email"
@@ -209,7 +209,7 @@ const AdminLogin = () => {
                             style={styles.input}
                         />
 
-                        <label htmlFor="password" style={styles.label}>Password</label>
+                        <label htmlFor="password" style={styles.label}><i class="fa-solid fa-lock"></i>Password</label>
                         <input
                             type="password"
                             name="password"
@@ -219,7 +219,7 @@ const AdminLogin = () => {
                             style={styles.input}
                         />
 
-                        <button type="submit" style={styles.submitBtn}>Log In</button>
+                        <button type="submit" style={styles.submitBtn}><i class="fa-solid fa-arrow-right-to-bracket"></i> Log In</button>
 
                         <div style={styles.orDivider}>or</div>
 
