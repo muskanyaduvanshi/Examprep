@@ -10,23 +10,33 @@ router.post('/', async (req, res) => {
 
 // admin login route
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const admin = await Admin.findOne({ email: email });
-    if (admin.password == password) {
+    try {
+        const { email, password } = req.body;
+
+        const admin = await Admin.findOne({ email });
+
+        if (!admin) {
+            return res.json({ message: "Admin not found" });
+        }
+
+        if (admin.password !== password) {
+            return res.json({ message: "Password Incorrect" });
+        }
+
         return res.json({
-            message: "Login Successfully", admin: {
-                role: 'admin',
+            message: "Login Successfully",
+            admin: {
+                role: "admin",
                 id: admin._id,
                 email: admin.email
             }
-        })
-    }
-    else {
-        return res.json({ message: "Username or password Incorrect" })
-    }
-    return res.json(admin);
-})
+        });
 
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Server Error" });
+    }
+});
 // change password logic
 router.put('/change/:email',async(req,res)=>{
     const {op,np,cnp} = req.body;

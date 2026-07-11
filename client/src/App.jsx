@@ -34,9 +34,9 @@ function App() {
         <Routes>
           {/* registration route */}
           <Route path="*" element={<Component/>}></Route>
-          <Route path="/" element={<Login />}></Route>
-          <Route path="/home" element={<Home/>}></Route>
-          <Route path="/register" element={<Registration />}></Route>
+          <Route path="/" element={<Home />}></Route>
+<Route path="/login" element={<Login />}></Route>
+<Route path="/register" element={<Registration />}></Route>
           {/* admin route */}
           <Route path='/adlogin' element={<AdminLogin />}></Route>
           <Route path="/admin/" element={<Dashboard />}>

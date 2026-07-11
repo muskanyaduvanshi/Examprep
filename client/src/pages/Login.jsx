@@ -212,9 +212,14 @@ const Login = () => {
               style={styles.input}
             />
 
-            <button type="submit" style={styles.submitBtn}><i class="fa-solid fa-arrow-right-to-bracket"></i>
-              Login
-            </button>
+            <button
+  type="button"
+  style={styles.submitBtn}
+  onClick={handleSubmit}
+>
+  <i className="fa-solid fa-arrow-right-to-bracket"></i>
+  Login
+</button>
 
             <div style={styles.checkbox}>
               <input type="checkbox" id="exampleCheck1" />

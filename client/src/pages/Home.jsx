@@ -78,7 +78,7 @@ const Home= () => {
           <div style={styles.subText}>Access your exam dashboard and practice tests</div>
           <button
             style={{ ...styles.button, ...styles.userBtn }}
-            onClick={() => navigate("/")}
+           onClick={() => navigate("/login")}
           >
             USER DASHBOARD
           </button>
