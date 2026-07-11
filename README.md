@@ -151,19 +151,6 @@ VITE_API_BASE_URL=https://your-render-backend-url.onrender.com
 
 ---
 
-## 📸 Screenshots
-
-You can add screenshots here.
-
-- Home Page
-- Student Login
-- Admin Login
-- Student Dashboard
-- Admin Dashboard
-- Examination Page
-- Results Page
-
----
 
 ## 🚀 Future Improvements
 
@@ -188,8 +175,7 @@ GitHub:
 https://github.com/muskanyaduvanshi
 
 LinkedIn:
-(Add your LinkedIn profile link)
-
+https://www.linkedin.com/in/muskan-yaduvanshi-4704b4319
 ---
 
 ## 📄 License
