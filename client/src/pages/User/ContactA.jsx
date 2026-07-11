@@ -1,7 +1,6 @@
 // src/components/ContactA.jsx
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
-
+import api from "../../services/api";
 
 const ContactA = () => {
   const [question, setQuestion] = useState('');
@@ -14,7 +13,7 @@ const ContactA = () => {
   const fetchUserMessages = async () => {
     if (!userId) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/message/user/${userId}`);
+      const res = await api.get(`/api/message/user/${userId}`);
       setMessages(res.data.message || []);
     } catch (err) {
       console.error('Error fetching user messages:', err);
@@ -31,7 +30,7 @@ const ContactA = () => {
     e.preventDefault();
     if (!question.trim()) return;
     try {
-      await axios.post('http://localhost:5000/api/message', { question, examineeId: userId });
+      await api.post('/api/message', { question, examineeId: userId });
       setQuestion('');
       fetchUserMessages();
     } catch (err) {
@@ -43,7 +42,7 @@ const ContactA = () => {
     const newText = prompt('Edit your message:', currentText);
     if (newText === null || !newText.trim()) return;
     try {
-      await axios.put(`http://localhost:5000/api/message/edit/${id}`, {
+      await api.put(`/api/message/edit/${id}`, {
         question: newText,
         role: 'user',
         userId
@@ -57,7 +56,7 @@ const ContactA = () => {
   const deleteByUser = async (id) => {
     if (!window.confirm('Delete this message?')) return;
     try {
-      await axios.put(`http://localhost:5000/api/message/delete/${id}`, {
+      await api.put(`/api/message/delete/${id}`, {
         role: 'user',
         userId
       });

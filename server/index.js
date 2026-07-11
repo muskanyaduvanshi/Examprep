@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -5,14 +6,15 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const url = 'mongodb://localhost:27017/examprep'
+const url = "mongodb://localhost:27017/examprep";
+
 mongoose.connect(url)
-    .then(() => {
-        console.log("successfully Connected")
-    })
-    .catch((er) => {
-        console.log(`Error is ${er}`)
-    })
+  .then(() => {
+    console.log("Successfully Connected");
+  })
+  .catch((err) => {
+    console.log(`Error is ${err}`);
+  });
     
 //apis started
 app.use("/uploads", express.static("uploads"));
@@ -33,6 +35,8 @@ app.use('/api/message', require('./routes/messageRoute'));
 app.use('/api/dashboard/', require('./routes/dashboardRoute'));
 //apis ended
 
-app.listen(5000, () => {
-    console.log("Server Connected on http://localhost:5000");
-})
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});

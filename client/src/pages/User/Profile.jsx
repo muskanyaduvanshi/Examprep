@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../services/api";
 import "./Profile.css";
 
 const Profile = () => {
@@ -32,13 +32,13 @@ const Profile = () => {
   useEffect(() => {
     const fetchExaminee = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/examinee/${examineeId}`);
+        const res = await api.get(`/api/examinee/${examineeId}`);
         console.log(res.data.data);
         
         if (res.data) {
           setFormData(res.data.data);
           if (res.data.profileImage) {
-            setProfilePic(`http://localhost:5000/uploads/${res.data.profileImage}`);
+            setProfilePic(`/uploads/${res.data.profileImage}`);
           }
         }
       } catch (err) {
@@ -74,8 +74,8 @@ const Profile = () => {
     }
 
     try {
-      const res = await axios.put(
-        `http://localhost:5000/api/examinee/${examineeId}`,
+      const res = await api.put(
+        `/api/examinee/${examineeId}`,
         data,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

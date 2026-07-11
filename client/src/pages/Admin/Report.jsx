@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from "../../services/api";
 import React, { useEffect, useState } from 'react';
 
 const Report = () => {
@@ -6,7 +6,7 @@ const Report = () => {
 
   const handlefetch = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/exams/report');
+      const res = await api.get('/api/exams/report');
       setData(res.data);
     } catch (er) {
       alert("Sorry, fetching reports failed");

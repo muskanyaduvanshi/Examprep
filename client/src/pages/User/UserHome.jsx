@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import api from "../../services/api";
 const UserHome = () => {
   const examineId = localStorage.getItem('userId');
   const [totalExams, setTotalExams] = useState(0);
@@ -10,11 +9,11 @@ const UserHome = () => {
   const handlefetch = async () => {
     try {
       // Total exams
-      const examResponse = await axios.get(`http://localhost:5000/api/dashboard/exams/${examineId}`);
+      const examResponse = await api.get(`/api/dashboard/exams/${examineId}`);
       setTotalExams(examResponse.data.totalExams || 0);
 
       // Passed exams + Results
-      const resultResponse = await axios.get(`http://localhost:5000/api/dashboard/examinee-result/${examineId}`);
+      const resultResponse = await api.get(`/api/dashboard/examinee-result/${examineId}`);
       setPassedExams(resultResponse.data.passedExams || 0);
       setRecentResults(resultResponse.data.recentResults || []); // Expecting backend to send recent exams
     } catch (error) {

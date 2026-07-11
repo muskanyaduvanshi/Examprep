@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
+import api from "../../services/api";
 const AdminLogin = () => {
     const [form, setForm] = useState({
         email: '',
@@ -15,7 +14,7 @@ const AdminLogin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post('http://localhost:5000/api/admin/login', form);
+        const res = await api.post('/api/admin/login', form);
 
         if (res.data.message === "Login Successfully") {
             localStorage.setItem("role", res.data.admin.role);

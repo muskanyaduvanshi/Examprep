@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import axios from 'axios';
-
+import api from "../../services/api";
 const ExamResultsDeclaration = ({ exams }) => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -10,7 +9,7 @@ const ExamResultsDeclaration = ({ exams }) => {
     setLoading(true);
     setMessage(null);
     try {
-      const response = await axios.post(`http://localhost:5000/api/exams/result/${examResultId}`);
+      const response = await api.post(`/api/exams/result/${examResultId}`);
       setMessage({ type: 'success', text: response.data.message });
     } catch (err) {
       setMessage({ type: 'error', text: err.response?.data?.message || 'Failed to declare result' });
@@ -20,7 +19,7 @@ const ExamResultsDeclaration = ({ exams }) => {
   };
   const [data, setData] = useState([]);
   const handlefetch = async () => {
-    const res = await axios.get('http://localhost:5000/api/exams/examination')
+    const res = await api.get('/api/exams/examination')
     setData(res.data.message);
     console.log(res)
   }

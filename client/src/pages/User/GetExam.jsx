@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import axios from 'axios';
+import api from "../../services/api";
 import './GetExam.css'; // custom css
 
 const GetExam = () => {
@@ -19,7 +19,7 @@ const GetExam = () => {
   useEffect(() => {
     const fetchExam = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/exams/exam/${examId}`);
+        const res = await api.get(`/api/exams/exam/${examId}`);
         const { exam: examData, questions: questionData } = res.data;
         setExam(examData);
         setQuestions(questionData);
@@ -62,7 +62,7 @@ const GetExam = () => {
   const handleSubmit = async () => {
     if (submitted) return;
     try {
-      const res = await axios.post('http://localhost:5000/api/exams/submit-exam', {
+      const res = await api.post('/api/exams/submit-exam', {
         examId,
         answers,
         email,

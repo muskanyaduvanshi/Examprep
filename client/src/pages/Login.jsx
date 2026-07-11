@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import loginImage from "../assets/images/login1.png";
 import { Link } from "react-router";
 
@@ -17,7 +17,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/examinee/login", data);
+      const res = await api.post("/api/examinee/login", data);
 
      if (res.data.message === "Login Successfully") {
   localStorage.setItem("userRole", res.data.user.role);

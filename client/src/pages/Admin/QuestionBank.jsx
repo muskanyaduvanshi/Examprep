@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
+import api from "../../services/api";
 const QuestionBank = () => {
   const [formData, setFormdata] = useState({
     question: "",
@@ -28,12 +27,12 @@ const QuestionBank = () => {
     e.preventDefault();
     try {
       if (editform) {
-        const res = await axios.put(`http://localhost:5000/api/question/${id.id}`, formData);
+        const res = await api.put(`/api/question/${id.id}`, formData);
         if (res) {
           alert('Question updated successfully');
         }
       } else {
-        const res = await axios.post('http://localhost:5000/api/question', formData);
+        const res = await api.post('/api/question', formData);
         if (res) {
           alert('Question added successfully');
         }
@@ -58,10 +57,10 @@ const QuestionBank = () => {
   };
 
   const handlefetch = async () => {
-    const res = await axios.get('http://localhost:5000/api/question');
+    const res = await api.get('/api/question');
     setData(res.data.data);
 
-    const res1 = await axios.get('http://localhost:5000/api/subject');
+    const res1 = await api.get('/api/subject');
     setSubjects(res1.data.data);
   };
 
@@ -71,7 +70,7 @@ const QuestionBank = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/api/question/${id}`);
+      const res = await api.delete(`/api/question/${id}`);
       if (res) {
         alert("Deleted Successfully");
         handlefetch();

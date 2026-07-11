@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from "../../services/api";
 import React, { useState } from 'react'
 
 const Chanpass = () => {
@@ -18,7 +18,7 @@ const Chanpass = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try{
-            const res =await axios.put(`http://localhost:5000/api/examinee/change/${userId}`,data);
+            const res =await api.put(`/api/examinee/change/${userId}`,data);
             if(res){
                 alert("Password Changed")
             }

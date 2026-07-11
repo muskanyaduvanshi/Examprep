@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import api from "../../services/api";
 
 const Subject = () => {
   const [form, setForm] = useState({
@@ -33,14 +33,14 @@ const Subject = () => {
     e.preventDefault();
     try {
       if(editform){
-        const res = await axios.put(`http://localhost:5000/api/subject/${id.id}`,form);
+        const res = await api.put(`/api/subject/${id.id}`,form);
         if(res){
           alert('Subject Updated Successfully')
            handlefetch();
         }
       }
       else{
-        const res = await axios.post('http://localhost:5000/api/subject', form)
+        const res = await api.post('/api/subject', form)
         if (res) {
           alert('Subject Added Successfully')
           handlefetch();
@@ -53,7 +53,7 @@ const Subject = () => {
   }
   // fetch data api
   const handlefetch = async () => {
-    const res = await axios.get('http://localhost:5000/api/subject')
+    const res = await api.get('/api/subject')
     // console.log(res.data);
     setData(res.data.data);
   }
@@ -65,7 +65,7 @@ const Subject = () => {
   // handle delete logic
   const handleDelete = async (id) => {
     // console.log(id)
-    const res = await axios.delete(`http://localhost:5000/api/subject/${id}`);
+    const res = await api.delete(`/api/subject/${id}`);
     if (res) {
       alert("Deleted Successfully");
     }

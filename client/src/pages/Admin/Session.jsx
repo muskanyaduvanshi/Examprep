@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from 'axios';
-
+import api from "../../services/api";
 const Session = () => {
   const [form, setForm] = useState({
     name: '',
@@ -33,7 +32,7 @@ const Session = () => {
     e.preventDefault();
     try {
       if (editform) {
-        const res = await axios.put(`http://localhost:5000/api/session/${id.id}`, form);
+        const res = await api.put(`/api/session/${id.id}`, form);
         if (res) {
           alert('Session updated Successfully')
           handlefetch();
@@ -41,7 +40,7 @@ const Session = () => {
         }
       }
       else {
-        const res = await axios.post('http://localhost:5000/api/session', form)
+        const res = await api.post('/api/session', form)
         if (res) {
           alert('Session Added Successfully')
           handlefetch();
@@ -55,7 +54,7 @@ const Session = () => {
   }
   // fetch data api
   const handlefetch = async () => {
-    const res = await axios.get('http://localhost:5000/api/session')
+    const res = await api.get('/api/session')
     // console.log(res.data);
     setData(res.data.data);
   }
@@ -67,7 +66,7 @@ const Session = () => {
   // handle delete logic
   const handleDelete = async (id) => {
     // console.log(id)
-    const res = await axios.delete(`http://localhost:5000/api/session/${id}`);
+    const res = await api.delete(`/api/session/${id}`);
     if (res) {
       alert("Deleted Successfully");
     }

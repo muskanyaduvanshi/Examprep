@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-
+import api from "../services/api";
 const Registration = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -11,6 +10,7 @@ const Registration = () => {
     college: '',
     qualification: '',
     session: '',
+    
   });
 
   const [sessions, setSessions] = useState([]);
@@ -18,7 +18,7 @@ const Registration = () => {
   useEffect(() => {
     const handlefetch = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/session");
+        const res = await api.get("/api/session");
         setSessions(res.data.data);
       } catch (er) {
         console.log(er);
@@ -37,7 +37,7 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/examinee', formData);
+      const res = await api.post('/api/examinee', formData);
       alert('Examinee Registered!');
       setFormData({
         name: '',

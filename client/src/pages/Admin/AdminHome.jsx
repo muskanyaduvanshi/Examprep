@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaUsers, FaBook, FaClipboardList } from "react-icons/fa";
-import axios from "axios";
+import api from "../../services/api";
 const AdminHome = () => {
   const [data, setData] = useState({});
   const [recentExams, setRecentExams] = useState([]);
@@ -14,16 +14,15 @@ const AdminHome = () => {
   const [dataExams, setDataExams] = useState([])
   const handlefetch = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/dashboard/");
-      const res = await axios.get('http://localhost:5000/api/exams/exams');
+      const response = await api.get("/api/dashboard/");
+      const res = await api.get('/api/exams/exams');
       setDataExams(res.data)
-      const result = await response.json();
-      setData(result);
+      setData(response.data);
 
-      // Assume recentExams are returned inside result
-      if (result.recentExams) {
-        setRecentExams(result.recentExams);
-      }
+if (response.data.recentExams) {
+  setRecentExams(response.data.recentExams);
+}
+
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
       setError("Failed to load dashboard data");
