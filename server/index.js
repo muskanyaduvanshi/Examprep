@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(cors());
 app.use(express.json());
-const url = "mongodb://localhost:27017/examprep";
+const url = process.env.MONGO_URI;
 
 mongoose.connect(url)
   .then(() => {
